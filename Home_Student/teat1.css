@@ -1,0 +1,70 @@
+  .font3{
+    font-family: Kh Muol;
+    font-size: 20px;
+    color: #000000;
+  }
+  .font4{
+    font-family: Kh Muol;
+    font-size: 20px;
+    color: #f30505;
+  }
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+
+  .IP5{
+    position: absolute;
+    top: 160px;
+    left: 1020px;
+    /* width: 1263px;
+    height: 100%; */
+    /* border: 2px solid #000000; */
+    /* background-color: rgb(255, 255, 255); */
+  }
+
+  .IP6{
+    position: absolute;
+    top: -60px;
+    left: 1070px;
+    /* width: 1263px;
+    height: 100%; */
+    /* border: 2px solid #000000; */
+    /* background-color: rgb(255, 255, 255); */
+  }
+
+  .IP7{
+    position: absolute;
+    top: 160px;
+    left: 1125px;
+    /* width: 1263px;
+    height: 100%; */
+    /* border: 2px solid #000000; */
+    /* background-color: rgb(255, 255, 255); */
+  }
+
+  .IP8{
+    position: absolute;
+    top: -60px;
+    left: 1185px;
+    /* width: 1263px;
+    height: 100%; */
+    /* border: 2px solid #000000; */
+    /* background-color: rgb(255, 255, 255); */
+  }
