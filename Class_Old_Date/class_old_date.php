@@ -35,7 +35,7 @@ include '../connect_SPL/connect_SPL.php';
   <div Class="titel1"><!-- <ក្បាលលើ>បើក -->
   <center>
     <h1 class="font1">联华学校</h1>
-    <h1 class="font2">តារ៉ាងទិន្នន័យចាស់ៗរបស់ថ្នាក់រៀន</h1>
+    <h1 class="font2">តារ៉ាងទិន្នន័យថ្នាក់រៀនដែលបានលុបនិងមុនកែប្រែ</h1>
   </center>
   </div><!-- <ក្បាលលើ>បិទ -->
 
@@ -57,8 +57,7 @@ include '../connect_SPL/connect_SPL.php';
 <table border="2" width="100%" style="border-collapse:collapse;"><!-- <table>001 -->
                 <tr><!-- <tr>002 -->
                 <th colspan="3"><!-- <th>002 -->
-                <a href="../Class/class.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1100px;height:50px;" value="Viwe Short Date"></a>
-                <a href="../View_Class/view_class.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:147px;height:50px;" value="View Long Date"></a>
+                <a href="../Class/class.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:1250px;height:50px;" value="ត្រឡប់ក្រោយ"></a>
                  </th><!-- <th>002 -->
                 </tr><!-- <tr>002 -->
                   <tr><!-- <tr>001 -->

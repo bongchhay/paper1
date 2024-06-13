@@ -1,5 +1,13 @@
 <?php
 include '../connect_SPL/connect_SPL.php';
+
+// if(isset($_GET['deleteid'])){
+//     $id=$_GET['deleteid'];
+
+//     $sql="delete from `datayear` where ID=$id";
+//     $result=mysqli_query($con,$sql);
+// }
+
 if(isset($_GET['deleteid'])){
     $id=$_GET['deleteid'];
 
@@ -9,5 +17,6 @@ if(isset($_GET['deleteid'])){
         header('location:Payment.php');
     }
 }
+
 
 ?>

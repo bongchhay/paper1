@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="teat.css">
         <link rel="stylesheet" href="teat1.css">
+        <link rel="stylesheet" href="teat2.css">
         <script src="teat.js"></script>
         <title>联华学校</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -34,7 +35,9 @@ include '../connect_SPL/connect_SPL.php'; ?>
   <center>
   <a href="../Home_Student/Home_Student.php"><button class="button1" type="button" >Home</button></a>
   <a href="../TuitionFees/ViewTuitionFees_student.php"><button class="button1" type="button" >មើលតម្លែសិក្សា</button></a>
+  </center>
 <form method="post">
+<label class="font6">E n t l</label>
     <label control-lsblr class="font3">ថ្នាក់រៀន:</lable>
   <select name="BookLevel" style="width:500px;height:45px;">
     <option>Select</option>
@@ -58,10 +61,11 @@ include '../connect_SPL/connect_SPL.php'; ?>
   ?>
   </select>
 <button type="submit" class="btn btn-primary" name="submit" style="width:100px;height:45px;">Research</button>
+<button class="btn btn-primary" style="width:190px;height:45px;"><a href="../Home_Student/Home_Student1.php" class="text-light">ស្វែងរកដោយសរសេរ</a></button>
 </th>
 </tr>
 </form>
-</center>
+
 </div><!-- divបិទIP3 -->
 <div class="IP5"><img src="../Photos/300.png" alt="Trulli" width="65" height="60"></div><!-- divបិទIP5 -->
 <div class="IP7"><img src="../Photos/301.png" alt="Trulli" width="65" height="65"></div><!-- divបិទIP7 -->
@@ -73,6 +77,10 @@ include '../connect_SPL/connect_SPL.php'; ?>
     <th scope="col"><center><input type="text" class="search-input" style="width:50px;text-align: center;" placeholder="ID"></center></th>
     <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ឈ្មោះចិន_ស"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ភេទ_ស"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃបង់ចូលរៀន"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃត្រូវបង់ម្ដងទៀត"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំណាំ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនខែដែលផុត"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ឈ្មោះចិន_គ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ភេទ_គ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="សៀវភៅភាគ"></center></th>
@@ -84,9 +92,6 @@ include '../connect_SPL/connect_SPL.php'; ?>
       <!-- <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនួនខែដែលបង់"></center></th> -->
       <!-- <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="បញ្ចុះតម្លៃ"></center></th> -->
       <!-- <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនួនលុយបង់"></center></th> -->
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃបង់ចូលរៀន"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃត្រូវបង់ម្ដងទៀត"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំណាំ"></center></th>
       <!-- <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃដែលមកបង់លុយ"></center></th> -->
       <!-- <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="លេខវិក័យប័ត្រ"></center></th> -->
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
@@ -130,35 +135,40 @@ if(isset($_POST['submit'])){
               
               if ($dateTimestamp1 > $dateTimestamp2){//（ដល់ថ្ងៃបង់ <= មិនទាន់ដល់  ）
                 echo'<tr>
-                <td style="text-align: center;">'.$row["ID"].'</td>
+                <td style="text-align: center;">C'.$row["ID"].'</td>
                 <td style="text-align: center;">'.$row["S_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["S_Gender"].'</td>
+                <td style="text-align: center;">'.$row['StartDate'].'</td>
+                <td style="text-align: center;">'.$EndDate.'</div></td>
+                <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
+                <td style="text-align: center;">0</td>
                 <td style="text-align: center;">'.$row["T_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["T_Gender"].'</td>
                 <td style="text-align: center;">'.$row['BookLevel'].'</td>
                 <td style="text-align: center;">'.$row['StudyTime'].'</td>
                 <td style="text-align: center;">'.$row['StudyDay'].'</td>
                 <td style="text-align: center;">'.$row['RoomNumber'].'</td>
-                <td style="text-align: center;">'.$row['StartDate'].'</td>
-                <td style="text-align: center;">'.$EndDate.'</div></td>
-                <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
                 <td style="text-align: center;">'.$row['Other'].'</td>
                 </tr>';
               }
               else{
+                $diffDate = abs (strtotime($date2) - strtotime($EndDate));
+                $yesrsDiff = floor($diffDate/(365*60*60*24));
+                $mothDiff = floor(($diffDate-$yesrsDiff * 365*60*60*24)/(30*60*60*24));
                 echo'<tr>
-                <td style="text-align: center;">'.$row["ID"].'</td>
+                <td style="text-align: center;">C'.$row["ID"].'</td>
                 <td style="text-align: center;">'.$row["S_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["S_Gender"].'</td>
+                <td style="text-align: center;">'.$row['StartDate'].'</td>
+                <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
+                <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
+                <td style="text-align: center;"><div class="fbtn btn-danger">'.$mothDiff.'</div></td>
                 <td style="text-align: center;">'.$row["T_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["T_Gender"].'</td>
                 <td style="text-align: center;">'.$row['BookLevel'].'</td>
                 <td style="text-align: center;">'.$row['StudyTime'].'</td>
                 <td style="text-align: center;">'.$row['StudyDay'].'</td>
                 <td style="text-align: center;">'.$row['RoomNumber'].'</td>
-                <td style="text-align: center;">'.$row['StartDate'].'</td>
-                <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
-                <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
                 <td style="text-align: center;">'.$row['Other'].'</td>
                 </tr>';
               }
@@ -188,7 +198,7 @@ if(isset($_POST['submit'])){
             echo '
             <div class="alert">
   <span class="closebtn">&times;</span> 
-  <strong class="font3">សុំទោស។ថ្នាក់ដែលអ្នកស្វែងរកមិនមានទេ!!!</strong>
+  <strong class="font3">សុំទោស។ថ្នាក់ដែលអ្នកស្វែងរកមិនមានសិស្សទេ!!!</strong>
 </div>
             ';
           }

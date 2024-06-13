@@ -33,6 +33,8 @@ $EndDate=$row['EndDate'];
 $PaymentDate=$row['PaymentDate'];
 $InvoiceNumber=$row['InvoiceNumber'];
 $Other=$row['Other'];
+$PayBack=$row['PayBack'];
+$BackMonth=$row['BackMonth'];
 ?>
 
 <!doctype html>
@@ -138,6 +140,16 @@ $Other=$row['Other'];
   <tr>
   <td class="font3">ថ្ងៃដែលត្រូវបង់ម្ដងទៀត(再交学费的日期)</td>
   <td class="font3" style="text-align: center;"><?php echo $EndDate;?></td>
+  </tr>
+
+  <tr>
+  <td class="font3">ចំនួនលុយសង(还钱)</td>
+  <td class="font3" style="text-align: center;"><?php echo $PayBack;?> $</td>
+  </tr>
+
+  <tr>
+  <td class="font3">ខែដែលសង(还的月)</td>
+  <td class="font3" style="text-align: center;"><?php echo $BackMonth;?></td>
   </tr>
 
   <tr>

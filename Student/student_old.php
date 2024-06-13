@@ -16,8 +16,8 @@ include '../connect_SPL/connect_SPL.php';
 <script>
     function submitForm(form) {
         swal({
-            title: "បញ្ជាក់៖លុបហើយមិនអាចទាញមកវិញបានទេ។",
-            text: "ច្បាស់ទេថាអ្នកពិតជាចង់លុបវាចេញ?",
+            title: "Are you sure?",
+            text: "ច្បាស់ទេថាអ្នកចង់លុប?",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -35,18 +35,18 @@ include '../connect_SPL/connect_SPL.php';
   <div Class="titel1"><!-- <ក្បាលលើ>បើក -->
   <center>
     <h1 class="font1">联华学校</h1>
-    <h1 class="font2">តារ៉ាងទិន្នន័យចាស់ៗរបស់គ្រូបង្រៀន</h1>
+    <h1 class="font2">តារ៉ាងទិន្នន័យចាស់ៗរបស់សិស្ស</h1>
   </center>
   </div><!-- <ក្បាលលើ>បិទ -->
 
   <div class="IP3">
   <center>
-  <a href="../Home/Home.php"><button class="button1" type="button" >Home</button></a>
+  <      <a href="../Home/Home.php"><button class="button1" type="button" >Home</button></a>
 <a href="../Teacher/teacher.php"><button class="button2" type="button" >Teacher</button></a>
 <a href="../Student/student.php"><button class="button3" type="button" href="student.php">Student</button></a>
 <a href="../Class/class.php"><button class="button4" type="button" href="student.php">Class</button></a>
 <a href="../Payment/Payment.php"><button class="button5" type="button" href="student.php">Paymeant</button></a>
-<a href="../TuitionFees/AddTuitionFees.php"><button class="button5" type="button" href="student.php">Add_QR</button></a>
+<a href="../TuitionFees/AddTuitionFees.php"><button class="button6" type="button" href="student.php">Add_QR</button></a>
 <a href="../ViweClassRoom/class_room.php"><button class="button6" type="button" href="student.php">ClassRoom</button></a>
 <a href="../StudentPay/ConfirmStudentPay.php"><button class="button6" type="button" href="student.php">អ្នកបង់តាមអ៊ីនធឺណែត</button></a><br>
 </center>
@@ -57,9 +57,9 @@ include '../connect_SPL/connect_SPL.php';
 <table border="2" width="100%" style="border-collapse:collapse;"><!-- <table>001 -->
                 <tr><!-- <tr>002 -->
                 <th colspan="3"><!-- <th>002 -->
-                  <center>
-                  <a href="../Teacher/teacher.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1247px;height:50px;" value="View New Date"></a>
-                <!-- <a href="add_name.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:87px;height:50px;" value="Old_Date"></a> -->
+                <center>
+                <a href="../Student/student.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1040px;height:50px;" value="ទិន្នន័យថ្មីៗ"></a>
+                <a href="../Student_Old_Date/student_old_data.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:200px;height:50px;" value="ទិន្នន័យដែលបានលុប"></a>
 </center>
                  </th><!-- <th>002 -->
                 </tr><!-- <tr>002 -->
@@ -74,40 +74,32 @@ include '../connect_SPL/connect_SPL.php';
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="ឈ្មោះចិន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="ភេទ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃខែឆ្នាំកំណើត"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:180px;text-align: center;" placeholder="លេខអត្តសញ្ញាណប័ណ្ណ"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="លេខទូរស័ព្ទ"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
-      <th scope="col"><center>កែប្រែ/លុប</center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:180px;text-align: center;" placeholder="លេខទូរស័ព្ទ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
+      <!-- <th scope="col"><center>កែប្រែ/លុប</center></th> -->
     </tr>
   </thead>
   <tbody>
-
     <?php
-       $sql="Select * from `tbl_teacher_old`";
+       $sql="Select * from `tbl_student2`";
        $result=mysqli_query($con,$sql);
        if($result){
         while($row=mysqli_fetch_assoc($result)){
           $id=$row['ID'];
-          $KhmerName=$row['T_KhmerName'];
-          $ChineseName=$row['T_ChineseName'];
-          $Gender=$row['T_Gender'];
+          $KhmerName=$row['S_KhmerName'];
+          $ChineseName=$row['S_ChineseName'];
+          $Gender=$row['S_Gender'];
           $DateOfBirth=$row['DateOfBirth'];
           $PhoneNumber=$row['PhoneNumber'];
-          $ID_Card=$row['ID_Card'];
           $Other=$row['Other'];
           echo'<tr>
-          <td style="text-align: center;">TOD'.$id.'</td>
+          <td style="text-align: center;">S'.$id.'</td>
           <td style="text-align: center;">'.$KhmerName.'</td>
           <td style="text-align: center;">'.$ChineseName.'</td>
           <td style="text-align: center;">'.$Gender.'</td>
           <td style="text-align: center;">'.$DateOfBirth.'</td>
           <td style="text-align: center;">'.$PhoneNumber.'</td>
-          <td style="text-align: center;">'.$ID_Card.'</td>
-          <td style="text-align: center;">'.$Other.'</td>
-          <td style="text-align: center;">
-          <form method="POST" action="delete.php?deleteid='.$id.'" onsubmit="return submitForm(this);">
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form></td>
+          <td style="text-align: center;">'.$Other.'</td>   
           </tr>';
         }
        }

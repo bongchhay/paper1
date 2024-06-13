@@ -8,7 +8,7 @@ if(isset($_GET['page']))
 else{
     $page = 1;
 }
- $num_per_page = 13;
+ $num_per_page = 10;
  $start_from = ($page-1)*05;
 
  $sql="Select * from `tbl_payment_old` limit $start_from,$num_per_page";
@@ -77,11 +77,13 @@ else{
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="IDសិស្ស"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="IDថ្នាក់រៀន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="ចំនូនខែ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="បញ្ចុះតម្លៃ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនលុយ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:180px;text-align: center;" placeholder="ថ្ងៃចូលរៀន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងែបញ្ជប់"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំណាំ"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="បញ្ចុះតម្លៃ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនួនលុយសង"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ខែដែលសង"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃមកបង់"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="លេខវិក័យបត្រ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
@@ -106,6 +108,8 @@ else{
           $PaymentDate=$row['PaymentDate'];
           $InvoiceNumber=$row['InvoiceNumber'];
           $Other=$row['Other'];
+          $PayBack=$row['PayBack'];
+          $BackMonth=$row['BackMonth'];
           date_default_timezone_set('Asia/Kolkata');
           $date2 =  date ("Y/m/d") ;
           $dateTimestamp1 = strtotime($EndDate);
@@ -117,13 +121,15 @@ else{
             <td style="text-align: center;">S'.$StudenID.'</td>
             <td style="text-align: center;">C'.$ClassID.'</td>
             <td style="text-align: center;">'.$ManyMonths.' ខែ</td>
+            <td style="text-align: center;">'.$Discount.' $</td>
             <td style="text-align: center;">'.$Payment.' $</td>
             <td style="text-align: center;">'.$StartDate.'</td>
             <td style="text-align: center;">'.$EndDate.'</td>
             <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
-            <td style="text-align: center;">'.$Discount.' $</td>
+            <td style="text-align: center;">'.$PayBack.' $</td>
+            <td style="text-align: center;">'.$BackMonth.'</td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
-            <td style="text-align: center;">'.$InvoiceNumber.'</td>
+            <td style="text-align: center;">NVP'.$InvoiceNumber.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             <td style="text-align: center;">
           <form method="POST" action="delete.php?deleteid='.$id.'" onsubmit="return submitForm(this);">
@@ -138,13 +144,15 @@ else{
             <td style="text-align: center;">S'.$StudenID.'</td>
             <td style="text-align: center;">C'.$ClassID.'</td>
             <td style="text-align: center;">'.$ManyMonths.' ខែ</td>
+            <td style="text-align: center;">'.$Discount.' $</td>
             <td style="text-align: center;">'.$Payment.' $</td>
             <td style="text-align: center;">'.$StartDate.'</td>
             <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
             <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
-            <td style="text-align: center;">'.$Discount.' $</td>
+            <td style="text-align: center;">'.$PayBack.' $</td>
+            <td style="text-align: center;">'.$BackMonth.'</td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
-            <td style="text-align: center;">'.$InvoiceNumber.'</td>
+            <td style="text-align: center;">NVP'.$InvoiceNumber.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             <td style="text-align: center;">
           <form method="POST" action="delete.php?deleteid='.$id.'" onsubmit="return submitForm(this);">

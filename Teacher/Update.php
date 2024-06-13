@@ -43,6 +43,19 @@ $DateOfBirth=$row['DateOfBirth'];
 $PhoneNumber=$row['PhoneNumber'];
 $ID_Card=$row['ID_Card'];
 $Other=$row['Other'];
+
+if(isset($_POST['submit'])){
+  $KhmerName=$_POST['T_KhmerName'];
+  $ChineseName=$_POST['T_ChineseName'];
+  $Gender=$_POST['T_Gender'];
+  $DateOfBirth=$_POST['DateOfBirth'];
+  $PhoneNumber=$_POST['PhoneNumber'];
+  $ID_Card=$_POST['ID_Card'];
+  $Other=$_POST['Other'];
+    // $to_day=$_POST['to_day'];
+    $sql="update `tbl_teacher2` set ID=$id,T_KhmerName='$KhmerName',T_ChineseName='$ChineseName',T_Gender='$Gender',DateOfBirth='$DateOfBirth',PhoneNumber='$PhoneNumber',ID_Card='$ID_Card',Other='$Other' where ID=$id";
+    $result=mysqli_query($con,$sql);}
+
 if(isset($_POST['submit'])){
   $KhmerName=$_POST['T_KhmerName'];
   $ChineseName=$_POST['T_ChineseName'];

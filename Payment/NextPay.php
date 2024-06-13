@@ -33,7 +33,9 @@ if(isset($_POST['submit'])){
   $PaymentDate=$_POST['PaymentDate'];
   $InvoiceNumber=$_POST['InvoiceNumber'];
   $Other=$_POST['Other'];
-  $sql="insert into `tbl_payment_old`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other')";
+  $PayBack=$_POST['PayBack'];
+  $BackMonth=$_POST['BackMonth'];
+  $sql="insert into `tbl_payment_old`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack,BackMonth)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack','$BackMonth')";
 $result=mysqli_query($con,$sql);
 //     if($result){
 //         // echo"successfully";
@@ -61,6 +63,8 @@ $Discount=$row['Discount'];
 $PaymentDate=$row['PaymentDate'];
 $InvoiceNumber=$row['InvoiceNumber'];
 $Other=$row['Other'];
+$PayBack=$row['PayBack'];
+
 if(isset($_POST['submit'])){
   $StudenID=$_POST['StudenID'];
   $ClassID=$_POST['ClassID'];
@@ -72,9 +76,28 @@ if(isset($_POST['submit'])){
   $PaymentDate=$_POST['PaymentDate'];
   $InvoiceNumber=$_POST['InvoiceNumber'];
   $Other=$_POST['Other'];
-  $sql="insert into `tbl_payment`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other')";
+  $PayBack=$_POST['PayBack'];
+  $BackMonth=$_POST['BackMonth'];
+  $sql="insert into `datayear`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack,BackMonth)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack','$BackMonth')";
   $result=mysqli_query($con,$sql);
+}
 
+if(isset($_POST['submit'])){
+  $StudenID=$_POST['StudenID'];
+  $ClassID=$_POST['ClassID'];
+  $ManyMonths=$_POST['ManyMonths'];
+  $Payment=$_POST['Payment'];
+  $StartDate=$_POST['StartDate'];
+  $EndDate=$_POST['EndDate'];
+  $Discount=$_POST['Discount'];
+  $PaymentDate=$_POST['PaymentDate'];
+  $InvoiceNumber=$_POST['InvoiceNumber'];
+  $Other=$_POST['Other'];
+  $PayBack=$_POST['PayBack'];
+  $BackMonth=$_POST['BackMonth'];
+  $sql="insert into `tbl_payment`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack,BackMonth)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack','$BackMonth')";
+  $result=mysqli_query($con,$sql);
+//លុប
     if($result){
       $sql_r="delete from `tbl_payment` where ID=$id";
       mysqli_query($con,$sql_r);
@@ -190,6 +213,18 @@ if(isset($_POST['submit'])){
     <input type="text" class="form-control"
     placeholder="Enter your PaymentDate" name="PaymentDate" autocomplete="off" value='.$date2.'>
   </div>
+
+  <div class="form-group">
+  <label >PayBack</label>
+  <input type="text" class="form-control"
+  placeholder="Enter your PayBack" name="PayBack" autocomplete="off" value='.$PayBack.'>
+</div>
+
+<div class="form-group">
+<label >BackMonth</label>
+<input type="text" class="form-control"
+placeholder="Enter your BackMonth" name="BackMonth" autocomplete="off" >
+</div>
 
   <div class="form-group">
     <label >Other</label>

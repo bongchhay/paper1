@@ -8,12 +8,20 @@
     font-size: 20px;
     color: #f30505;
   }
+
+  .font5{
+    /* font-family: Kh Muol; */
+    /* font-size: 20px; */
+    color: #ffffff;
+  }
+
   .alert {
     padding: 20px;
     background-color: #f44336;
     color: white;
   }
   
+ 
   .closebtn {
     margin-left: 15px;
     color: white;
@@ -68,3 +76,4 @@
     /* border: 2px solid #000000; */
     /* background-color: rgb(255, 255, 255); */
   }
+

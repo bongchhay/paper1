@@ -91,8 +91,8 @@
 
 .IP7{
   position: absolute;
-  top: 200px;
-  left: 1000px;
+  top: 100px;
+  left: 0px;
   width: 100px;
   height: 100px;
   border: 2px solid #000000;

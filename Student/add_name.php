@@ -27,6 +27,28 @@ if(isset($_POST['submit'])){
 // }
 }
 ?>
+
+<?php
+include '../connect_SPL/connect_SPL.php';
+if(isset($_POST['submit'])){
+  $KhmerName=$_POST['S_KhmerName'];
+  $ChineseName=$_POST['S_ChineseName'];
+  $Gender=$_POST['S_Gender'];
+  $DateOfBirth=$_POST['DateOfBirth'];
+  $PhoneNumber=$_POST['PhoneNumber'];
+  $Other=$_POST['Other'];
+    $sql="insert into `tbl_student2`(S_KhmerName,S_ChineseName,S_Gender,DateOfBirth,PhoneNumber,Other)values('$KhmerName','$ChineseName','$Gender','$DateOfBirth','$PhoneNumber','$Other')";
+    $result=mysqli_query($con,$sql);
+//     if($result){
+//         // echo"successfully";
+//         header('location:student.php');
+//     }
+//     else{
+//     die(mysqli_error($con));
+// }
+}
+?>
+
 <?php
 include '../connect_SPL/connect_SPL.php';
 if(isset($_POST['submit'])){

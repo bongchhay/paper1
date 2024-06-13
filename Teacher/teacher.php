@@ -58,8 +58,8 @@ include '../connect_SPL/connect_SPL.php';
                 <tr><!-- <tr>002 -->
                 <th colspan="3"><!-- <th>002 -->
                   <center>
-                  <a href="add_name.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1160px;height:50px;" value="Add_Teacher"></a>
-                <a href="../Teacher_Old_Date/teacher_OldDate.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:87px;height:50px;" value="Old_Date"></a>
+                  <a href="add_name.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1040px;height:50px;" value="បញ្ចូលគ្រូថ្មី"></a>
+                <a href="../Teacher/teacher_old.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:200px;height:50px;" value="ទិន្នន័យចាស់ៗ"></a>
 </center>
                  </th><!-- <th>002 -->
                 </tr><!-- <tr>002 -->

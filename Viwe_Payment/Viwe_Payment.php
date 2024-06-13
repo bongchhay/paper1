@@ -32,8 +32,9 @@ include '../connect_SPL/connect_SPL.php';
 <a href="../TuitionFees/AddTuitionFees.php"><button class="button6" type="button" href="student.php">Add_QR</button></a>
 <a href="../ViweClassRoom/class_room.php"><button class="button6" type="button" href="student.php">ClassRoom</button></a>
 <a href="../StudentPay/ConfirmStudentPay.php"><button class="button6" type="button" href="student.php">អ្នកបង់តាមអ៊ីនធឺណែត</button></a><br>
-<a href="../Payment/Payment.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1160px;height:50px;" value="Viwe Short Date"></a>
-<a href="../Payment_Old_Date/Payment_Old_Date.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:87px;height:50px;" value="Old_Date"></a>
+<a href="../Payment/Payment.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:890px;height:50px;" value="មើលទិន្នន័យខ្លីៗ"></a>
+<a href="../Viwe_Payment/OldDateAndNewDate.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:150px;height:50px;" value="ទិន្នន័យចាស់ៗ"></a>
+<a href="../Payment_Old_Date/Payment_Old_Date.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-danger" style="width:200px;height:50px;" value="មើលទិន្នន័យដែលបានលុប"></a>
 
 </center>
 </div><!-- divបិទIP3 -->
@@ -117,7 +118,7 @@ include '../connect_SPL/connect_SPL.php';
             <td style="text-align: center;">'.$EndDate.'</td>
             <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
-            <td style="text-align: center;">'.$InvoiceNumber.'</td>
+            <td style="text-align: center;">NVP'.$InvoiceNumber.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             </tr>';
          
@@ -142,7 +143,7 @@ include '../connect_SPL/connect_SPL.php';
             <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
             <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
-            <td style="text-align: center;">'.$InvoiceNumber.'</td>
+            <td style="text-align: center;">NVP'.$InvoiceNumber.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             </tr>';
           }

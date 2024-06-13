@@ -44,7 +44,7 @@ include '../connect_SPL/connect_SPL.php';
   <div Class="titel1"><!-- <ក្បាលលើ>បើក -->
   <center>
     <h1 class="font1">联华学校</h1>
-    <h1 class="font2">តារ៉ាងទិន្នន័យចាស់ៗរបស់សិស្ស</h1>
+    <h1 class="font2">តារ៉ាងទិន្នន័យសិស្សដែលបានលុបនិងមុនកែប្រែ</h1>
   </center>
   </div><!-- <ក្បាលលើ>បិទ -->
 
@@ -67,7 +67,7 @@ include '../connect_SPL/connect_SPL.php';
                 <tr><!-- <tr>002 -->
                 <th colspan="3"><!-- <th>002 -->
                 <center>
-                <a href="../Student/student.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1247px;height:50px;" value="View New Date"></a>
+                <a href="../Student/student.php" class="text-light"><input name="btnsearch" type="submit" class="btn btn-primary" style="width:1247px;height:50px;" value="ទិន្នន័យថ្មីៗ"></a>
 </center>
                  </th><!-- <th>002 -->
                 </tr><!-- <tr>002 -->
@@ -84,7 +84,7 @@ include '../connect_SPL/connect_SPL.php';
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃខែឆ្នាំកំណើត"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:180px;text-align: center;" placeholder="លេខទូរស័ព្ទ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
-      <th scope="col"><center>កែប្រែ/លុប</center></th>
+      <th scope="col"><center>លុប</center></th>
     </tr>
   </thead>
   <tbody>

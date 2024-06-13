@@ -32,7 +32,8 @@ if(isset($_POST['submit'])){
   $PaymentDate=$_POST['PaymentDate'];
   $InvoiceNumber=$_POST['InvoiceNumber'];
   $Other=$_POST['Other'];
-  $sql="insert into `tbl_payment_old`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other')";
+  $PayBack=$_POST['PayBack'];
+  $sql="insert into `tbl_payment_old`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack')";
 $result=mysqli_query($con,$sql);
 //     if($result){
 //         // echo"successfully";
@@ -56,7 +57,33 @@ if(isset($_POST['submit'])){
   $PaymentDate=$_POST['PaymentDate'];
   $InvoiceNumber=$_POST['InvoiceNumber'];
   $Other=$_POST['Other'];
-  $sql="insert into `tbl_payment`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other')";
+  $PayBack=$_POST['PayBack'];
+  $sql="insert into `datayear`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack')";
+$result=mysqli_query($con,$sql);
+//     if($result){
+//         // echo"successfully";
+//         header('location:teacher.php');
+//     }
+//     else{
+//     die(mysqli_error($con));
+// }
+}
+?>
+<?php
+include '../connect_SPL/connect_SPL.php';
+if(isset($_POST['submit'])){
+  $StudenID=$_POST['StudenID'];
+  $ClassID=$_POST['ClassID'];
+  $ManyMonths=$_POST['ManyMonths'];
+  $Payment=$_POST['Payment'];
+  $StartDate=$_POST['StartDate'];
+  $EndDate=$_POST['EndDate'];
+  $Discount=$_POST['Discount'];
+  $PaymentDate=$_POST['PaymentDate'];
+  $InvoiceNumber=$_POST['InvoiceNumber'];
+  $Other=$_POST['Other'];
+  $PayBack=$_POST['PayBack'];
+  $sql="insert into `tbl_payment`(StudenID,ClassID,ManyMonths,Payment,StartDate,EndDate,Discount,PaymentDate,InvoiceNumber,Other,PayBack)values('$StudenID','$ClassID','$ManyMonths','$Payment','$StartDate','$EndDate','$Discount','$PaymentDate','$InvoiceNumber','$Other','$PayBack')";
 $result=mysqli_query($con,$sql);
     if($result){
         // echo"successfully";
@@ -101,6 +128,7 @@ $result=mysqli_query($con,$sql);
     <div class="IP5">
     <!-- <label >InvoiceNumber</label> -->
     <input type="text" class="form-control" name="InvoiceNumber" value=<?php echo $PV;?>>
+    <input type="number" class="form-control" name="PayBack" value=<?php echo '0 $';?>>
   </div><!-- បិទ<div class="IP5"> -->
   <div class="IP6"></div>
   
@@ -158,6 +186,7 @@ $result=mysqli_query($con,$sql);
     <input type="text" class="form-control"
     placeholder="Enter your Other" name="Other">
   </div>
+ 
 </div>
 </th>
 </tr>

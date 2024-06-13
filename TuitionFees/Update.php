@@ -83,7 +83,7 @@
         <textarea name="updated_text" cols="40" rows="4" placeholder="Enter updated text"><?php echo $row_update['text']; ?></textarea>
       </div>
       <a href="AddTuitionFees.php" class="text-light"><input class="btn btn-danger" style="width:500px;height:50px;" value="BACK"></a>
-      <button style="width:500px;height:50px;" class="btn btn-primary" type="submit" name="update">Update</button>
+      <button style="width:500px;height:50px;" class="btn btn-primary" type="submit" onclick="alert('Update Successfully!!!')" name="update">Update</button>
       <p><?php echo $msg; ?></p>
     </form>
   </div>

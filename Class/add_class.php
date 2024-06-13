@@ -29,6 +29,30 @@ if(isset($_POST['submit'])){
 // }
 }
 ?>
+
+<?php
+include '../connect_SPL/connect_SPL.php';
+if(isset($_POST['submit'])){
+  $BookLevel=$_POST['BookLevel'];
+  $Teacher=$_POST['TeacherID'];
+  $StudyDate=$_POST['StudyDate'];
+  $StudyTime=$_POST['StudyTime'];
+  $StudyDay=$_POST['StudyDay'];
+  $TuitionFees=$_POST['TuitionFees'];
+  $RoomNumber=$_POST['RoomNumber'];
+  $Other=$_POST['Other'];
+$sql="insert into `tbl_class2`(BookLevel,TeacherID,StudyDate,StudyTime,StudyDay,TuitionFees,RoomNumber,Other)values('$BookLevel','$Teacher','$StudyDate','$StudyTime','$StudyDay','$TuitionFees','$RoomNumber','$Other')";
+$result=mysqli_query($con,$sql);
+//     if($result){
+//         // echo"successfully";
+//         header('location:class.php');
+//     }
+//     else{
+//     die(mysqli_error($con));
+// }
+}
+?>
+
 <?php
 include '../connect_SPL/connect_SPL.php';
 if(isset($_POST['submit'])){

@@ -10,6 +10,8 @@
 </head>
 <?php
 include '../connect_SPL/connect_SPL.php';
+
+$not= 001;
 if(isset($_POST['submit'])){
   $KhmerName=$_POST['T_KhmerName'];
   $ChineseName=$_POST['T_ChineseName'];
@@ -18,27 +20,19 @@ if(isset($_POST['submit'])){
   $PhoneNumber=$_POST['PhoneNumber'];
   $ID_Card=$_POST['ID_Card'];
   $Other=$_POST['Other'];
+
+  if (empty($KhmerName & $ChineseName & $Gender & $DateOfBirth & $ID_Card)) {
+	  // header("Location: ../ViweClassRoom/ShowYearMonthDay.php");
+		        // exit();
+      $not= 000;
+          
+	}else{
   $sql="insert into `tbl_teacher_old`(T_KhmerName,T_ChineseName,T_Gender,DateOfBirth,PhoneNumber,ID_Card,Other)values('$KhmerName','$ChineseName','$Gender','$DateOfBirth','$PhoneNumber','$ID_Card','$Other')";
 $result=mysqli_query($con,$sql);
-//     if($result){
-//         // echo"successfully";
-//         header('location:teacher.php');
-//     }
-//     else{
-//     die(mysqli_error($con));
-// }
-}
-?>
-<?php
-include '../connect_SPL/connect_SPL.php';
-if(isset($_POST['submit'])){
-  $KhmerName=$_POST['T_KhmerName'];
-  $ChineseName=$_POST['T_ChineseName'];
-  $Gender=$_POST['T_Gender'];
-  $DateOfBirth=$_POST['DateOfBirth'];
-  $PhoneNumber=$_POST['PhoneNumber'];
-  $ID_Card=$_POST['ID_Card'];
-  $Other=$_POST['Other'];
+
+  $sql="insert into `tbl_teacher2`(T_KhmerName,T_ChineseName,T_Gender,DateOfBirth,PhoneNumber,ID_Card,Other)values('$KhmerName','$ChineseName','$Gender','$DateOfBirth','$PhoneNumber','$ID_Card','$Other')";
+$result=mysqli_query($con,$sql);
+
   $sql="insert into `tbl_teacher`(T_KhmerName,T_ChineseName,T_Gender,DateOfBirth,PhoneNumber,ID_Card,Other)values('$KhmerName','$ChineseName','$Gender','$DateOfBirth','$PhoneNumber','$ID_Card','$Other')";
 $result=mysqli_query($con,$sql);
     if($result){
@@ -48,6 +42,8 @@ $result=mysqli_query($con,$sql);
     else{
     die(mysqli_error($con));
 }
+}
+
 }
 ?>
 <!doctype html>
@@ -73,10 +69,19 @@ $result=mysqli_query($con,$sql);
   <div class="add1"><!-- <class="add1">បើក -->
   <table border="2" width="1258px" style="border-collapse:collapse;" class="table1">
   <tr>
+  <!-- <h1 style="color:red ; background-color:powderblue;">សុំទោស។ទិន្នន័យដែលអ្នកស្វែងរកមិនមានទេ!!!</h1> -->
     <th>
+    <?php
+      if ($not == "000"){
+        echo '
+        <center>
+<h1 style="color:black ; background-color:#f03030;">សុំទោស។អ្នកបញ្ចូលទិន្នន័យខ្វះហើយសូមបញ្ចូលម្ដងទៀត!!!</h1>
+</center>
+        ';
+      }
+      ?>
     <div class="container">
     <form method="post">
-
     <div class="form-group">
     <label >KhmerName</label>
     <input type="text" class="form-control"
@@ -129,7 +134,8 @@ $result=mysqli_query($con,$sql);
 <tr>
   <th>
 <a href="teacher.php" class="text-light"><input name="btnsearch" class="btn btn-danger" style="width:623px;height:50px;" value="BACK"></a>
-<button type="submit" class="btn btn-primary" name="submit" style="width:622px;height:50px;" onclick="alert('AddTeacher Successfully!!!')">Add</button>
+<button type="submit" class="btn btn-primary" name="submit" style="width:622px;height:50px;">Add</button>
+<!-- <button type="submit" class="btn btn-primary" name="submit" style="width:622px;height:50px;" onclick="alert('AddTeacher Successfully!!!')">Add</button> -->
 </th>
 </tr>
 </form>

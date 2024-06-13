@@ -86,13 +86,14 @@ $result=mysqli_query($con,$sql);
 <div class="scroll">
 <table border="2" >
   <thead>
-    <tr>
+  <tr>
     <!-- <th scope="col"><center><input type="text" class="search-input" style="width:50px;text-align: center;" placeholder="ID"></center></th> -->
     <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="លេខវិក័យបត្រ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="IDសិស្ស"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="IDថ្នាក់រៀន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:110px;text-align: center;" placeholder="ចំនូនខែ"></center></th>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនលុយ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="បញ្ចុះតម្លៃ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនលុយបង់"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:180px;text-align: center;" placeholder="ថ្ងៃចូលរៀន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងែបញ្ជប់"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំណាំ" list='scripts'></center></th>
@@ -100,7 +101,9 @@ $result=mysqli_query($con,$sql);
       <option value='មិនទាន់ដល់ថ្ងែបង់'>
       <option value='ដល់ថ្ងែបង់ប្រាក់'>
 </datalist>
-      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="បញ្ចុះតម្លៃ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនខែដែលផុត"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនួនលុយសង"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ខែដែលសង"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃមកបង់"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:350px;text-align: center;" placeholder="កែប្រែ/លុប"></center></th>
@@ -124,6 +127,8 @@ $result=mysqli_query($con,$sql);
           $PaymentDate=$row['PaymentDate'];
           $InvoiceNumber=$row['InvoiceNumber'];
           $Other=$row['Other'];
+          $PayBack=$row['PayBack'];
+          $BackMonth=$row['BackMonth'];
           date_default_timezone_set('Asia/Kolkata');
           $date2 =  date ("Y/m/d") ;
           $dateTimestamp1 = strtotime($EndDate);
@@ -135,11 +140,14 @@ $result=mysqli_query($con,$sql);
             <td style="text-align: center;">S'.$StudenID.'</td>
             <td style="text-align: center;">C'.$ClassID.'</td>
             <td style="text-align: center;">'.$ManyMonths.' ខែ</td>
+            <td style="text-align: center;">'.$Discount.' $</td>
             <td style="text-align: center;">'.$Payment.' $</td>
             <td style="text-align: center;">'.$StartDate.'</td>
             <td style="text-align: center;">'.$EndDate.'</td>
             <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
-            <td style="text-align: center;">'.$Discount.' $</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">'.$PayBack.' $</td>
+            <td style="text-align: center;">'.$BackMonth.'</td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             <td style="text-align: center;">
@@ -152,16 +160,22 @@ $result=mysqli_query($con,$sql);
             </tr>';
           }
           else{
+            $diffDate = abs (strtotime($date2) - strtotime($EndDate));
+            $yesrsDiff = floor($diffDate/(365*60*60*24));
+            $mothDiff = floor(($diffDate-$yesrsDiff * 365*60*60*24)/(30*60*60*24));
             echo'<tr>
             <td style="text-align: center;">NVP'.$InvoiceNumber.'</td>
             <td style="text-align: center;">S'.$StudenID.'</td>
             <td style="text-align: center;">C'.$ClassID.'</td>
             <td style="text-align: center;">'.$ManyMonths.' ខែ</td>
+            <td style="text-align: center;">'.$Discount.' $</td>
             <td style="text-align: center;">'.$Payment.' $</td>
             <td style="text-align: center;">'.$StartDate.'</td>
             <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
             <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
-            <td style="text-align: center;">'.$Discount.' $</td>
+            <td style="text-align: center;"><div class="fbtn btn-danger">'.$mothDiff.'</div></td>
+            <td style="text-align: center;">'.$PayBack.' $</td>
+            <td style="text-align: center;">'.$BackMonth.'</td>
             <td style="text-align: center;">'.$PaymentDate.'</td>
             <td style="text-align: center;">'.$Other.'</td>
             <td style="text-align: center;">

@@ -27,6 +27,13 @@
     color: #000000;
   }
 
+  .font4{
+    /* font-family: Kh Muol; */
+    /* font-size: 20px; */
+    color: #ff0000;
+  }
+
+
   .body1{
     background-color: rgb(0, 0, 0); 
   }
@@ -66,6 +73,27 @@
     border: 2px solid #000000;
     background-color: rgb(255, 255, 255);
   }
+
+  .IPA5{
+    position: absolute;
+    top: 220px;
+    left: 400px;
+    width: 400px;
+    height: 150px;
+    border: 2px solid #000000;
+    background-color: rgb(182, 171, 171);
+  }
+
+  .IPA6{
+    position: absolute;
+    top: 220px;
+    left: 0px;
+    width: 1263px;
+    height: 660px;
+    border: 2px solid #0400ff;
+    background-color: rgb(255, 255, 255);
+  }
+
   .button1 {
     background-color: #aa0404;
     border: none;
@@ -157,6 +185,8 @@
   div.scroll {
     background-color: rgb(255, 255, 255);
     height: 580px;
-    width: 1250px;
+    width: 1256px;
     overflow-y: scroll;
   }
+
+

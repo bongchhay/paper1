@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="stylesheet" href="teat.css">
         <link rel="stylesheet" href="teat1.css">
+        <link rel="stylesheet" href="teat2.css">
         <script src="teat.js"></script>
         <title>联华学校</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -31,7 +32,7 @@ include '../connect_SPL/connect_SPL.php'; ?>
   </center>
   </div><!-- <ក្បាលលើ>បិទ -->
   <div class="IP3">
-  <center>
+    <center>
   <a href="../Home/Home.php"><button class="button1" type="button" >Home</button></a>
 <a href="../Teacher/teacher.php"><button class="button2" type="button" >Teacher</button></a>
 <a href="../Student/student.php"><button class="button3" type="button" href="student.php">Student</button></a>
@@ -41,8 +42,9 @@ include '../connect_SPL/connect_SPL.php'; ?>
 <a href="../ViweClassRoom/class_room.php"><button class="button6" type="button" href="student.php">ClassRoom</button></a>
 <a href="../StudentPay/ConfirmStudentPay.php"><button class="button5" type="button" href="student.php">អ្នកបង់តាមអ៊ីនធឺណែត</button></a><br>
 <!-- hhhhhhhh -->
-
+</center>
 <form method="post">
+<label class="font6">E n t l</label>
     <label control-lsblr class="font3">ថ្នាក់រៀន:</lable>
   <select name="BookLevel" style="width:500px;height:45px;">
     <option>Select</option>
@@ -66,10 +68,10 @@ include '../connect_SPL/connect_SPL.php'; ?>
   ?>
   </select>
 <button type="submit" class="btn btn-primary" name="submit" style="width:100px;height:45px;">Research</button>
+<button class="btn btn-primary" style="width:190px;height:45px;"><a href="../ViweClassRoom/class_room1.php" class="text-light">ស្វែងរកដោយសរសេរ</a></button>
 </th>
 </tr>
 </form>
-</center>
 </div><!-- divបិទIP3 -->
 <div class="IP5"><img src="../Photos/300.png" alt="Trulli" width="60" height="60" ></div><!-- divបិទIP5 -->
 <div class="IP7"><img src="../Photos/301.png" alt="Trulli" width="65" height="65"></div><!-- divបិទIP7 -->
@@ -95,6 +97,9 @@ include '../connect_SPL/connect_SPL.php'; ?>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃបង់ចូលរៀន"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃត្រូវបង់ម្ដងទៀត"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំណាំ"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនូនខែដែលផុត"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ចំនួនលុយសង"></center></th>
+      <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ខែដែលសង"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="ថ្ងៃដែលមកបង់លុយ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:150px;text-align: center;" placeholder="លេខវិក័យប័ត្រ"></center></th>
       <th scope="col"><center><input type="text" class="search-input" style="width:100px;text-align: center;" placeholder="ផ្សេងៗ"></center></th>
@@ -102,6 +107,9 @@ include '../connect_SPL/connect_SPL.php'; ?>
   </thead>
   <tbody>
 <?php
+          $dateTimestamp4 = "MM" ;
+          $totalPrice = 0;
+          $totalPrice1 = 0;
 if(isset($_POST['submit'])){
           $BookLevel1=$_POST['BookLevel'];
           $sql = "SELECT 
@@ -123,7 +131,9 @@ if(isset($_POST['submit'])){
           EndDate,
           PaymentDate,
           InvoiceNumber,
-          Other
+          Other,
+          PayBack,
+          BackMonth
           FROM views_payment WHERE ID='$BookLevel1'";
           $result = $con->query($sql);
           if ($result->num_rows > 0) {
@@ -131,14 +141,17 @@ if(isset($_POST['submit'])){
             while($row = $result->fetch_assoc()) {
               // echo "<br> id: ". $row["ID"]. " - Name: ". $row["S_ChineseName"]. " BookLevel: ". $row["BookLevel"]. "<br>";
               $EndDate=$row['EndDate'];
+              $PaymentDate=$row['PaymentDate'];
               date_default_timezone_set('Asia/Kolkata');
               $date2 =  date ("Y/m/d") ;
               $dateTimestamp1 = strtotime($EndDate);
               $dateTimestamp2 = strtotime($date2);
+              $dateTimestamp3 = date("m", strtotime($PaymentDate));
+              $dateTimestamp4 = date("m", strtotime($date2));
               
               if ($dateTimestamp1 > $dateTimestamp2){//（ដល់ថ្ងៃបង់ <= មិនទាន់ដល់  ）
                 echo'<tr>
-                <td style="text-align: center;">'.$row["ID"].'</td>
+                <td style="text-align: center;">C'.$row["ID"].'</td>
                 <td style="text-align: center;">'.$row["S_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["S_Gender"].'</td>
                 <td style="text-align: center;">'.$row["T_ChineseName"].'</td>
@@ -148,22 +161,27 @@ if(isset($_POST['submit'])){
                 <td style="text-align: center;">'.$row['StudyTime'].'</td>
                 <td style="text-align: center;">'.$row['StudyDay'].'</td>
                 <td style="text-align: center;">'.$row['RoomNumber'].'</td>
-                <td style="text-align: center;">'.$row['TuitionFees'].'</td>
-                <td style="text-align: center;">'.$row['ManyMonths'].'</td>
-                <td style="text-align: center;">'.$row['Discount'].'</td>
-                <td style="text-align: center;">'.$row['Payment'].'</td>
+                <td style="text-align: center;">'.$row['TuitionFees'].' $</td>
+                <td style="text-align: center;">'.$row['ManyMonths'].' ខែ</td>
+                <td style="text-align: center;">'.$row['Discount'].'​$</td>
+                <td style="text-align: center;">'.$row['Payment'].' $</td>
                 <td style="text-align: center;">'.$row['StartDate'].'</td>
                 <td style="text-align: center;">'.$EndDate.'</div></td>
                 <td style="text-align: center;">មិនទាន់ដល់ថ្ងែបង់</td>
+                <td style="text-align: center;">0</td>
+                <td style="text-align: center;">'.$row['PayBack'].' $</td>
+                <td style="text-align: center;">'.$row['BackMonth'].'</td>
                 <td style="text-align: center;">'.$row['PaymentDate'].'</td>
                 <td style="text-align: center;">'.$row['InvoiceNumber'].'</td>
                 <td style="text-align: center;">'.$row['Other'].'</td>
                 </tr>';
-             
               }
               else{
+                $diffDate = abs (strtotime($date2) - strtotime($EndDate));
+            $yesrsDiff = floor($diffDate/(365*60*60*24));
+            $mothDiff = floor(($diffDate-$yesrsDiff * 365*60*60*24)/(30*60*60*24));
                 echo'<tr>
-                <td style="text-align: center;">'.$row["ID"].'</td>
+                <td style="text-align: center;">C'.$row["ID"].'</td>
                 <td style="text-align: center;">'.$row["S_ChineseName"].'</td>
                 <td style="text-align: center;">'.$row["S_Gender"].'</td>
                 <td style="text-align: center;">'.$row["T_ChineseName"].'</td>
@@ -173,21 +191,31 @@ if(isset($_POST['submit'])){
                 <td style="text-align: center;">'.$row['StudyTime'].'</td>
                 <td style="text-align: center;">'.$row['StudyDay'].'</td>
                 <td style="text-align: center;">'.$row['RoomNumber'].'</td>
-                <td style="text-align: center;">'.$row['TuitionFees'].'</td>
-                <td style="text-align: center;">'.$row['ManyMonths'].'</td>
-                <td style="text-align: center;">'.$row['Discount'].'</td>
-                <td style="text-align: center;">'.$row['Payment'].'</td>
+                <td style="text-align: center;">'.$row['TuitionFees'].' $</td>
+                <td style="text-align: center;">'.$row['ManyMonths'].' ខែ</td>
+                <td style="text-align: center;">'.$row['Discount'].' $</td>
+                <td style="text-align: center;">'.$row['Payment'].' $</td>
                 <td style="text-align: center;">'.$row['StartDate'].'</td>
-                <td style="text-align: center;">'.$EndDate.'</div></td>
                 <td style="text-align: center;"><div class="fbtn btn-danger">'.$EndDate.'</div></td>
                 <td style="text-align: center;"><div class="fbtn btn-danger">ដល់ថ្ងែបង់ប្រាក់</div></td>
+                <td style="text-align: center;"><div class="fbtn btn-danger">'.$mothDiff.'</div></td>
+                <td style="text-align: center;">'.$row['PayBack'].' $</td>
+                <td style="text-align: center;">'.$row['BackMonth'].'</td>
                 <td style="text-align: center;">'.$row['PaymentDate'].'</td>
                 <td style="text-align: center;">'.$row['InvoiceNumber'].'</td>
                 <td style="text-align: center;">'.$row['Other'].'</td>
                 </tr>';
               }
-   
+        if($dateTimestamp1 > $dateTimestamp2){
+          $price = $row["TuitionFees"];
+              $totalPrice += $price;
+        }
+        if($dateTimestamp4 == $dateTimestamp3){
+          $price1 = $row["PayBack"];
+              $totalPrice1 += $price1;
+        }
            }
+
            //  រាប់ចំនួនសិស្ស
            $sql = "SELECT COUNT(*) AS expired_count FROM views_payment WHERE ID='$BookLevel1'";
            $result = $con->query($sql);
@@ -212,13 +240,25 @@ if(isset($_POST['submit'])){
             echo '
             <div class="alert">
   <span class="closebtn">&times;</span> 
-  <strong class="font3">សុំទោស។ថ្នាក់ដែលអ្នកស្វែងរកមិនមានទេ!!!</strong>
+  <strong class="font3">សុំទោស។ថ្នាក់ដែលអ្នកស្វែងរកមិនមានសិស្សទេ!!!</strong>
 </div>
             ';
           }
     // $result=mysqli_query($con,$sql);
 }
-
+echo'<tr>
+          <td colspan="23">សិស្សមកបង់ក្នុងខែ('.$dateTimestamp4.')សរុប='.$totalPrice.'$</td>
+          </tr>';
+echo'<tr>
+          <td colspan="23">ខែ('.$dateTimestamp4.')សិស្សយកលុយមកសងសរុប='.$totalPrice1.'$</td>
+          </tr>';
+echo'<tr>
+          <td colspan="23">ចំណូលក្នុងខែ('.$dateTimestamp4.')សរុប='.$totalPrice+$totalPrice1.'$</td>
+          </tr>';
+          $total=($totalPrice+$totalPrice1)/2;
+echo'<tr>
+          <td colspan="23">លុយដែលគ្រូត្រូវទទួលបានក្នុងខែ('.$dateTimestamp4.')សរុប='.$total.'$</td>
+          </tr>';
 ?>
    </tbody>
 </table>

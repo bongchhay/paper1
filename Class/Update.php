@@ -53,6 +53,20 @@ $StudyDay=$row['StudyDay'];
 $TuitionFees=$row['TuitionFees'];
 $RoomNumber=$row['RoomNumber'];
 $Other=$row['Other'];
+
+if(isset($_POST['submit'])){
+  $BookLevel=$_POST['BookLevel'];
+  $Teacher=$_POST['TeacherID'];
+  $StudyDate=$_POST['StudyDate'];
+  $StudyTime=$_POST['StudyTime'];
+  $StudyDay=$_POST['StudyDay'];
+  $TuitionFees=$_POST['TuitionFees'];
+  $RoomNumber=$_POST['RoomNumber'];
+  $Other=$_POST['Other'];
+    // $to_day=$_POST['to_day'];
+    $sql="update `tbl_class2` set ID=$id,BookLevel='$BookLevel',TeacherID='$Teacher',StudyDate='$StudyDate',StudyTime='$StudyTime',StudyDay='$StudyDay',TuitionFees='$TuitionFees',RoomNumber='$RoomNumber',Other='$Other' where ID=$id";
+    $result=mysqli_query($con,$sql);
+}
 if(isset($_POST['submit'])){
   $BookLevel=$_POST['BookLevel'];
   $Teacher=$_POST['TeacherID'];
